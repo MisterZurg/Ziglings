@@ -9,10 +9,15 @@ const std = @import("std");
 
 const NumError = error{IllegalNumber};
 
-pub fn main() void {
+pub fn main() !void {   
+    // Problem 026_hello2.zig 
+    // main() definition now returns "!void" 
+    // Since there's no specific error type, this means
+    // that Zig will infer the error type. 
+    // This is appropriate in the case of main()
     const stdout = std.io.getStdOut().writer();
 
-    const my_num: u32 = getNumber();
+    const my_num: u32 = try getNumber();
 
     try stdout.print("my_num={}\n", .{my_num});
 }
